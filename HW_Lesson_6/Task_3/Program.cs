@@ -39,7 +39,7 @@ void arraySqrt (int [,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            if (i==j)
+            if (i == j && (i+1) % 2 == 0 && (j+1) % 2 == 0)
             {
                 array [i,j] = array[i,j]*array[i,j];
             }
