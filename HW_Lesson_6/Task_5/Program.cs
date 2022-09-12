@@ -50,7 +50,7 @@ void arrayChange (int [,] arrayOld, int [,] arrayNew)
     }
 }
 
-if (rows > 0 | columns > 0)
+if (rows > 0 && columns > 0)
 {
     int [,] matrix = new int[rows, columns];
     int [,] matrix2 = new int[rows, columns];

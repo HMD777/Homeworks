@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.");
+﻿Console.WriteLine("Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить, что это невозможно (в случае, если матрица не квадратная).");
 Console.WriteLine("Введите количество столбцов в массиве: ");
 int columns = int.Parse(Console.ReadLine());
 Console.WriteLine("Введите количество строк в массиве: ");
@@ -29,29 +29,20 @@ void printArray (int [,] array)
     
 }
 
-void arrayFilterMax (int [,] array)
+void arrayChange (int [,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = i; j < array.GetLength(1); j++)
         {
-            
-            for (int n = j; n < array.GetLength(1); n++)
-            {
-                int max = array [i, j];
-                if (array [i, n] > max)
-                {
-                    max = array[i, n];
-                    array [i, n] = array[i, j];
-                    array [i, j] = max;
-                }
-            }
+            int temp = array [i, j];
+            array [i, j] = array [j, i];
+            array [j, i] = temp;       
         }
     }
 }
 
-if (rows > 0 && columns > 0)
+if (rows > 0 && columns > 0 && rows == columns)
 {
     Console.WriteLine("Введите минимальное число в массиве: ");
     int min = int.Parse(Console.ReadLine());
@@ -61,10 +52,14 @@ if (rows > 0 && columns > 0)
     fillArray(matrix, min, max);
     printArray(matrix);
     Console.WriteLine();
-    arrayFilterMax(matrix);
+    arrayChange(matrix);
     printArray(matrix);
+}
+else if (rows < 0 | columns < 0)
+{
+    Console.WriteLine("Ощибка! Количество строк или столбцов не могут быть отрицательными!");
 }
 else
 {
-    Console.WriteLine("Ощибка! Количество строк или столбцов не могут быть отрицательными!");
+    Console.WriteLine("Ощибка! Количество строк или столбцов должны быть одинаковыми!");
 }
