@@ -57,10 +57,8 @@ void PrintArray(int[,,] array)
 
 if (rows > 0 && columns > 0 && pages > 0)
 {
-    Console.WriteLine("Введите минимальное число в массиве: ");
-    int min = int.Parse(Console.ReadLine());
-    Console.WriteLine("Введите максимальное число в массиве: ");
-    int max = int.Parse(Console.ReadLine());
+    int min = 10;
+    int max = 100;
     int[,,] matrix = new int[rows, columns, pages];
     FillArray(matrix, min, max);
     PrintArray(matrix);
