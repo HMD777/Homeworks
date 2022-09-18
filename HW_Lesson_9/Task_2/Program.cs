@@ -6,25 +6,22 @@ int num1 = int.Parse(Console.ReadLine());
 Console.WriteLine("Введите конечное число: ");
 int num2 = int.Parse(Console.ReadLine());
 
-void SumNumbers(int start, int end)
+int SumNumbers(int start, int end)
 {
-    int result = 0;
-    if (start > end)
+    int result = start;
+    if (end > start)
     {
-        for (int i = end; i <= start; i++)
-        {
-            result = result + i;
-        }
+        result = result + SumNumbers(start + 1, end);
     }
-    else if (start < end)
-    {
-        for (int i = start; i <= end; i++)
-        {
-            result = result + i;
-        }
-    }
-    else result = start;
-    Console.WriteLine($"Сумма элекментов от '{start}' до '{end}' равен '{result}'.");
+    return result;
 }
 
-SumNumbers(num1, num2);
+if (num1 > num2)
+{
+    Console.WriteLine($"Сумма элекментов от '{num1}' до '{num2}' равен '{SumNumbers(num1, num2)}'");
+}
+else if (num1 < num2)
+{
+    Console.WriteLine($"Сумма элекментов от '{num1}' до '{num2}' равен '{SumNumbers(num2, num1)}'");
+}
+else Console.WriteLine($"Сумма элекментов от '{num1}' до '{num2}' равен '{num1}'");

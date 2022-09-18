@@ -5,23 +5,25 @@ int num1 = int.Parse(Console.ReadLine());
 Console.WriteLine("Введите конечное число: ");
 int num2 = int.Parse(Console.ReadLine());
 
-void ShowNumbers(int start, int end)
+void ShowPlus(int start, int end)
 {
-    if (start > end)
+    if (end >= start)
     {
-        for (int i = start; i >= end; i--)
-        {
-            Console.Write($"{i}, ");
-        }
+        Console.Write("{0} ", start);
+        ShowPlus(start + 1, end);
     }
-    else if (start < end)
-    {
-        for (int i = start; i <= end; i++)
-        {
-            Console.Write($"{i}, ");
-        }
-    }
-    else Console.WriteLine(start);
 }
 
-ShowNumbers(num1, num2);
+void ShowMinus(int start, int end)
+{
+    if (end <= start)
+    {
+        Console.Write("{0} ", start);
+        ShowMinus(start - 1, end);
+    }
+}
+if (num1 < num2)
+{
+    ShowPlus(num1, num2);
+}
+else ShowMinus(num1, num2);
